@@ -44,10 +44,10 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-6">
             <Link
               href="/"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium"
+              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
             >
               Home
             </Link>
@@ -58,7 +58,7 @@ export default function Navbar() {
               onMouseEnter={() => setActiveDropdown('services')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <button className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium">
+              <button className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2">
                 Services
               </button>
               {activeDropdown === 'services' && (
@@ -82,7 +82,7 @@ export default function Navbar() {
               onMouseEnter={() => setActiveDropdown('solutions')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <button className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium">
+              <button className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2">
                 Solutions
               </button>
               {activeDropdown === 'solutions' && (
@@ -102,35 +102,35 @@ export default function Navbar() {
 
             <Link
               href="/about"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium"
+              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
             >
               About Us
             </Link>
 
             <Link
               href="/testimonials"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium"
+              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
             >
               Testimonials
             </Link>
 
             <Link
               href="/faq"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium"
+              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
             >
               FAQ
             </Link>
 
             <Link
               href="/blog"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium"
+              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
             >
               Blog
             </Link>
 
             <Link
               href="/contact"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 ml-2"
             >
               Contact Us
             </Link>

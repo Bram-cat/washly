@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, CheckCircle, Droplets, Home, Building2, Sparkles, Award, Clock, Shield } from 'lucide-react';
+import { Phone, CheckCircle, Droplets, Home, Building2, Sparkles, Award, Clock, Shield, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function HomePage() {
   const services = [
@@ -34,7 +36,7 @@ export default function HomePage() {
     },
     {
       title: 'Roof Cleaning',
-      description: 'Extend your roof\'s life with professional cleaning.',
+      description: 'Extend your roof life with professional cleaning.',
       icon: Home,
       image: '/5.png',
       href: '/services/roof-cleaning',
@@ -62,65 +64,69 @@ export default function HomePage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-white">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 mb-6">
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-6xl py-20">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold text-gray-900 mb-4 tracking-tight">
             WASHLY
-            <span className="block text-blue-600 mt-2">WASHING SERVICES</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-orange-500 font-semibold mb-8">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-blue-600 mb-6 tracking-tight">
+            WASHING SERVICES
+          </h2>
+          <p className="text-2xl sm:text-3xl text-orange-500 font-semibold mb-8 tracking-wide">
             SHINE BRIGHTER TOGETHER
           </p>
-          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
             Professional window cleaning, gutter cleaning, and pressure washing services in Prince Edward Island.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Link
-              href="/contact"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
-            >
-              Get Free Quote
-            </Link>
-            <a
-              href="tel:705-822-8605"
-              className="bg-white hover:bg-gray-50 text-blue-600 border-2 border-blue-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg flex items-center"
-            >
-              <Phone className="mr-2" size={20} />
-              705-822-8605
-            </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-6 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+              <Link href="/contact">
+                Get Free Quote
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-10 py-6 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+              <a href="tel:705-822-8605">
+                <Phone className="mr-2 h-5 w-5" />
+                705-822-8605
+              </a>
+            </Button>
           </div>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 mt-6">
             Locally Operated in PEI | Call us today for a free quote
           </p>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div
+              <Card
                 key={index}
-                className="text-center p-8 rounded-2xl hover:bg-blue-50 transition-all duration-300"
+                className="text-center border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-white to-blue-50"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                  <feature.icon className="text-blue-600" size={32} />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
+                <CardHeader>
+                  <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                    <feature.icon className="text-blue-600 h-8 w-8" />
+                  </div>
+                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">{feature.description}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Our Services
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -133,39 +139,31 @@ export default function HomePage() {
               <Link
                 key={index}
                 href={service.href}
-                className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                className="group"
               >
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center mb-3">
-                    <service.icon className="text-blue-600 mr-2" size={24} />
-                    <h3 className="text-xl font-semibold">{service.title}</h3>
+                <Card className="h-full overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
-                  <p className="text-gray-600">{service.description}</p>
-                  <div className="mt-4 text-blue-600 font-medium flex items-center">
-                    Learn More
-                    <svg
-                      className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </div>
+                  <CardHeader>
+                    <div className="flex items-center gap-3 mb-2">
+                      <service.icon className="text-blue-600 h-6 w-6" />
+                      <CardTitle className="text-xl">{service.title}</CardTitle>
+                    </div>
+                    <CardDescription className="text-base">{service.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center text-blue-600 font-medium">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                    </div>
+                  </CardContent>
+                </Card>
               </Link>
             ))}
           </div>
@@ -173,45 +171,42 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-24 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-5xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Make Your Property Shine?
           </h2>
-          <p className="text-xl mb-8 opacity-90">
+          <p className="text-xl mb-10 opacity-90 max-w-3xl mx-auto">
             Contact us today for a free, no-obligation quote. We serve residential and commercial clients across PEI.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/contact"
-              className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-200 hover:scale-105"
-            >
-              Request Free Quote
-            </Link>
+            <Button asChild size="lg" className="bg-white hover:bg-gray-100 text-blue-600 px-10 py-6 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+              <Link href="/contact">
+                Request Free Quote
+              </Link>
+            </Button>
             <div className="flex gap-4">
-              <a
-                href="tel:705-822-8605"
-                className="bg-blue-800 hover:bg-blue-900 text-white px-6 py-4 rounded-full text-lg font-semibold transition-all duration-200"
-              >
-                705-822-8605
-              </a>
-              <a
-                href="tel:705-970-4920"
-                className="bg-blue-800 hover:bg-blue-900 text-white px-6 py-4 rounded-full text-lg font-semibold transition-all duration-200"
-              >
-                705-970-4920
-              </a>
+              <Button asChild size="lg" className="bg-blue-800 hover:bg-blue-900 text-white px-8 py-6 rounded-full text-lg font-semibold shadow-lg transition-all duration-200">
+                <a href="tel:705-822-8605">
+                  705-822-8605
+                </a>
+              </Button>
+              <Button asChild size="lg" className="bg-blue-800 hover:bg-blue-900 text-white px-8 py-6 rounded-full text-lg font-semibold shadow-lg transition-all duration-200">
+                <a href="tel:705-970-4920">
+                  705-970-4920
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl font-bold text-gray-900 mb-8">
                 Why Choose Washly?
               </h2>
               <div className="space-y-4">
@@ -225,14 +220,14 @@ export default function HomePage() {
                   'Flexible scheduling',
                   'Residential and commercial services',
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start">
-                    <CheckCircle className="text-blue-600 mr-3 flex-shrink-0 mt-1" size={20} />
-                    <p className="text-gray-700">{item}</p>
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="text-blue-600 flex-shrink-0 mt-1 h-6 w-6" />
+                    <p className="text-gray-700 text-lg">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/6.png"
                 alt="Professional washing services"
@@ -245,30 +240,38 @@ export default function HomePage() {
       </section>
 
       {/* Service Areas Section */}
-      <section className="py-20 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-24 bg-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-7xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
             Proudly Serving PEI
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-600 mb-12">
             Professional washing services throughout Prince Edward Island
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Link
               href="/residential"
-              className="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="group"
             >
-              <Home className="text-blue-600 mx-auto mb-4" size={48} />
-              <h3 className="text-xl font-semibold mb-2">Residential Services</h3>
-              <p className="text-gray-600">Home owners & property managers</p>
+              <Card className="p-10 border-none shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white">
+                <CardHeader>
+                  <Home className="text-blue-600 mx-auto mb-4 h-16 w-16" />
+                  <CardTitle className="text-2xl mb-3">Residential Services</CardTitle>
+                  <CardDescription className="text-base">Home owners & property managers</CardDescription>
+                </CardHeader>
+              </Card>
             </Link>
             <Link
               href="/commercial"
-              className="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="group"
             >
-              <Building2 className="text-blue-600 mx-auto mb-4" size={48} />
-              <h3 className="text-xl font-semibold mb-2">Commercial Services</h3>
-              <p className="text-gray-600">Businesses & commercial properties</p>
+              <Card className="p-10 border-none shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white">
+                <CardHeader>
+                  <Building2 className="text-blue-600 mx-auto mb-4 h-16 w-16" />
+                  <CardTitle className="text-2xl mb-3">Commercial Services</CardTitle>
+                  <CardDescription className="text-base">Businesses & commercial properties</CardDescription>
+                </CardHeader>
+              </Card>
             </Link>
           </div>
         </div>
