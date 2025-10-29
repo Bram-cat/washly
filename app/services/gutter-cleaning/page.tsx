@@ -48,7 +48,7 @@ export default function GutterCleaningPage() {
                 Expert Gutter Cleaning in PEI
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                Clogged gutters can cause serious damage to your home's foundation, roof, and landscaping. Our professional gutter cleaning service removes all debris, ensuring your gutters function properly and protect your property.
+                Clogged gutters can cause serious damage to your home foundation, roof, and landscaping. Our professional gutter cleaning service removes all debris, ensuring your gutters function properly and protect your property.
               </p>
               <p className="text-lg text-gray-600 mb-6">
                 We thoroughly clean out leaves, twigs, and other debris, then flush your gutters to ensure proper water flow. We also inspect for any damage or issues while we work.

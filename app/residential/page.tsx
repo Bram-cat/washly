@@ -41,7 +41,7 @@ export default function ResidentialPage() {
               { title: 'Gutter Cleaning', desc: 'Remove debris and ensure proper water flow to protect your home', link: '/services/gutter-cleaning', image: '/2.png' },
               { title: 'Pressure Washing', desc: 'Deep clean driveways, walkways, and exterior surfaces', link: '/services/pressure-washing', image: '/3.png' },
               { title: 'Soft Washing', desc: 'Gentle cleaning for siding, decks, and delicate surfaces', link: '/services/soft-washing', image: '/4.png' },
-              { title: 'Roof Cleaning', desc: 'Remove moss and algae to extend your roof\'s lifespan', link: '/services/roof-cleaning', image: '/5.png' },
+              { title: 'Roof Cleaning', desc: 'Remove moss and algae to extend your roof lifespan', link: '/services/roof-cleaning', image: '/5.png' },
             ].map((service, i) => (
               <Link key={i} href={service.link} className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2">
                 <div className="relative h-48 overflow-hidden">

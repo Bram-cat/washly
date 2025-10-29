@@ -32,7 +32,7 @@ export default function SoftWashingPage() {
             <div>
               <h2 className="text-4xl font-bold mb-6">Safe & Effective Soft Washing</h2>
               <p className="text-lg text-gray-600 mb-6">
-                Soft washing uses low-pressure water combined with specialized cleaning solutions to safely remove dirt, algae, mold, and mildew from delicate surfaces. It's perfect for materials that could be damaged by high-pressure washing.
+                Soft washing uses low-pressure water combined with specialized cleaning solutions to safely remove dirt, algae, mold, and mildew from delicate surfaces. It is perfect for materials that could be damaged by high-pressure washing.
               </p>
               <p className="text-lg text-gray-600 mb-6">
                 Our eco-friendly cleaning solutions kill organic growth at the root, providing longer-lasting results than pressure washing alone.

@@ -4,7 +4,13 @@
       "Bash(npm install:*)",
       "Bash(npx shadcn@latest init -y)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Washly professional washing services website\n\n- Implemented professional website for Washly cleaning company\n- Added Apple-inspired dropdown navigation with Supreme font\n- Created comprehensive pages: Home, Services (5 pages), About, Contact, Testimonials, FAQ, Blog, Residential, Commercial\n- Integrated Google Maps location and phone numbers (705-822-8605, 705-970-4920)\n- Used white and blue color scheme as requested\n- Optimized for SEO with multiple pages and proper metadata\n- Fully responsive design with modern UI components\n- Set up shadcn/ui for component library\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

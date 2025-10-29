@@ -98,7 +98,7 @@ export default function WindowCleaningPage() {
               <div>
                 <h3 className="text-xl font-semibold mb-3">Enhanced Curb Appeal</h3>
                 <p className="text-gray-600">
-                  Clean windows dramatically improve your property's appearance and make a great first impression.
+                  Clean windows dramatically improve your property appearance and make a great first impression.
                 </p>
               </div>
               <div>

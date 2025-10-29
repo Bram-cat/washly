@@ -18,7 +18,7 @@ export default function RoofCleaningPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
           <Home className="mx-auto mb-4" size={48} />
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Roof Cleaning Services</h1>
-          <p className="text-xl mb-8">Extend your roof's life with professional cleaning</p>
+          <p className="text-xl mb-8">Extend your roof life with professional cleaning</p>
           <a href="tel:705-822-8605" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold inline-flex items-center">
             <Phone className="mr-2" size={20} />
             Call for Free Quote
@@ -32,10 +32,10 @@ export default function RoofCleaningPage() {
             <div>
               <h2 className="text-4xl font-bold mb-6">Expert Roof Cleaning in PEI</h2>
               <p className="text-lg text-gray-600 mb-6">
-                Moss, algae, and lichen can significantly reduce your roof's lifespan and affect your home's curb appeal. Our professional roof cleaning service safely removes these harmful growths using specialized soft washing techniques.
+                Moss, algae, and lichen can significantly reduce your roof lifespan and affect your home curb appeal. Our professional roof cleaning service safely removes these harmful growths using specialized soft washing techniques.
               </p>
               <p className="text-lg text-gray-600 mb-6">
-                We use gentle, low-pressure methods that won't damage your shingles while effectively eliminating organic growth and restoring your roof's appearance.
+                We use gentle, low-pressure methods that will not damage your shingles while effectively eliminating organic growth and restoring your roof appearance.
               </p>
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
@@ -49,7 +49,7 @@ export default function RoofCleaningPage() {
               {[
                 { title: 'Extended Roof Life', desc: 'Remove harmful organisms that deteriorate shingles and reduce roof lifespan.' },
                 { title: 'Improved Energy Efficiency', desc: 'Clean roofs reflect more sunlight, helping keep your home cooler in summer.' },
-                { title: 'Enhanced Curb Appeal', desc: 'Restore your roof\'s original color and boost your home\'s overall appearance.' },
+                { title: 'Enhanced Curb Appeal', desc: 'Restore your roof original color and boost your home overall appearance.' },
                 { title: 'Prevent Damage', desc: 'Stop moss and algae from lifting shingles and causing leaks.' },
                 { title: 'Maintain Warranty', desc: 'Some roof warranties require regular cleaning and maintenance.' },
                 { title: 'Increase Property Value', desc: 'A clean, well-maintained roof is a major selling point.' },

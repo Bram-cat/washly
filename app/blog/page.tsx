@@ -12,13 +12,13 @@ export default function BlogPage() {
   const posts = [
     {
       title: 'The Importance of Regular Window Cleaning',
-      excerpt: 'Discover why regular professional window cleaning is more than just aesthetics - it's about protecting your investment and improving your quality of life.',
+      excerpt: 'Discover why regular professional window cleaning is more than just aesthetics - it is about protecting your investment and improving your quality of life.',
       date: '2025-03-15',
       image: '/1.png',
       category: 'Window Cleaning',
     },
     {
-      title: 'Spring Gutter Cleaning: Why It Can't Wait',
+      title: 'Spring Gutter Cleaning: Why It Cannot Wait',
       excerpt: 'Learn why spring is the most critical time for gutter cleaning and what happens if you delay this essential maintenance task.',
       date: '2025-03-10',
       image: '/2.png',
@@ -26,7 +26,7 @@ export default function BlogPage() {
     },
     {
       title: 'Pressure Washing vs. Soft Washing: Which is Right for You?',
-      excerpt: 'Understanding the difference between pressure washing and soft washing can save you from costly damage. Here's what you need to know.',
+      excerpt: 'Understanding the difference between pressure washing and soft washing can save you from costly damage. Here is what you need to know.',
       date: '2025-03-05',
       image: '/3.png',
       category: 'Pressure Washing',
@@ -40,14 +40,14 @@ export default function BlogPage() {
     },
     {
       title: '5 Signs Your Home Needs Professional Washing Services',
-      excerpt: 'Not sure if it's time to call the professionals? Here are five telltale signs that your home is due for a thorough cleaning.',
+      excerpt: 'Not sure if it is time to call the professionals? Here are five telltale signs that your home is due for a thorough cleaning.',
       date: '2025-02-20',
       image: '/6.png',
       category: 'Home Maintenance',
     },
     {
       title: 'Eco-Friendly Cleaning: Our Commitment to the Environment',
-      excerpt: 'Learn about the environmentally responsible cleaning solutions we use and how they protect both your property and PEI's natural beauty.',
+      excerpt: 'Learn about the environmentally responsible cleaning solutions we use and how they protect both your property and PEI natural beauty.',
       date: '2025-02-15',
       image: '/7.png',
       category: 'Sustainability',
