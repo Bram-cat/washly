@@ -1,13 +1,96 @@
 'use client';
 
+import * as React from 'react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
+import { cn } from '@/lib/utils';
+
+const services = [
+  {
+    title: 'Window Cleaning',
+    href: '/services/window-cleaning',
+    description: 'Crystal clear windows that shine bright, inside and out.',
+  },
+  {
+    title: 'Gutter Cleaning',
+    href: '/services/gutter-cleaning',
+    description: 'Keep your gutters flowing freely and prevent water damage.',
+  },
+  {
+    title: 'Pressure Washing',
+    href: '/services/pressure-washing',
+    description: 'Remove dirt, grime, and stains from any surface.',
+  },
+  {
+    title: 'Soft Washing',
+    href: '/services/soft-washing',
+    description: 'Gentle yet effective cleaning for delicate surfaces.',
+  },
+  {
+    title: 'Roof Cleaning',
+    href: '/services/roof-cleaning',
+    description: 'Extend your roof life with professional cleaning.',
+  },
+];
+
+const solutions = [
+  {
+    title: 'Residential Services',
+    href: '/residential',
+    description: 'Professional washing services for homeowners and property managers.',
+  },
+  {
+    title: 'Commercial Services',
+    href: '/commercial',
+    description: 'Comprehensive cleaning solutions for businesses and commercial properties.',
+  },
+];
+
+const ListItem = React.forwardRef<
+  React.ElementRef<'a'>,
+  React.ComponentPropsWithoutRef<'a'>
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            'group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100/50 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]',
+            className
+          )}
+          {...props}
+        >
+          <div className="flex items-center justify-between">
+            <div className="text-base font-semibold leading-none bg-gradient-to-r from-slate-900 to-blue-900 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300">
+              {title}
+            </div>
+            <ChevronRight className="h-4 w-4 text-blue-600 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+          </div>
+          <p className="line-clamp-2 text-sm leading-snug text-slate-600 group-hover:text-slate-700 transition-colors duration-300 mt-2">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = 'ListItem';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,131 +100,161 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const services = [
-    { name: 'Window Cleaning', href: '/services/window-cleaning' },
-    { name: 'Gutter Cleaning', href: '/services/gutter-cleaning' },
-    { name: 'Pressure Washing', href: '/services/pressure-washing' },
-    { name: 'Soft Washing', href: '/services/soft-washing' },
-    { name: 'Roof Cleaning', href: '/services/roof-cleaning' },
-  ];
-
-  const solutions = [
-    { name: 'Residential Services', href: '/residential' },
-    { name: 'Commercial Services', href: '/commercial' },
-  ];
+  // Close mobile menu when resizing to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobileMenuOpen]);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-effect shadow-lg shadow-blue-500/5' : 'bg-white/90 backdrop-blur-lg border-b border-blue-100/20'
-      }`}
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+        isScrolled
+          ? 'glass-effect shadow-xl shadow-blue-500/5 border-b border-blue-100/20'
+          : 'bg-white/90 backdrop-blur-lg'
+      )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-7xl">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+          <Link
+            href="/"
+            className="flex items-center space-x-3 group transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:via-blue-600 group-hover:to-blue-700 transition-all duration-300 tracking-tight">
               WASHLY
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link
-              href="/"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
-            >
-              Home
-            </Link>
-
-            {/* Services Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('services')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2">
-                Services
-              </button>
-              {activeDropdown === 'services' && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg py-2 border border-gray-100">
-                  {services.map((service) => (
-                    <Link
-                      key={service.name}
-                      href={service.href}
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+          <div className="hidden md:flex items-center gap-2">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link href="/" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                      )}
                     >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+                      Home
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
 
-            {/* Solutions Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('solutions')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2">
-                Solutions
-              </button>
-              {activeDropdown === 'solutions' && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg py-2 border border-gray-100">
-                  {solutions.map((solution) => (
-                    <Link
-                      key={solution.name}
-                      href={solution.href}
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 data-[state=open]:bg-blue-50/50 data-[state=open]:text-blue-600 font-medium transition-all duration-300 rounded-full px-5 py-2.5">
+                    Services
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[600px] gap-3 p-6 md:grid-cols-2 bg-white/95 backdrop-blur-xl rounded-2xl border border-blue-100/50 shadow-2xl shadow-blue-500/10">
+                      {services.map((service) => (
+                        <ListItem
+                          key={service.title}
+                          title={service.title}
+                          href={service.href}
+                        >
+                          {service.description}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 data-[state=open]:bg-blue-50/50 data-[state=open]:text-blue-600 font-medium transition-all duration-300 rounded-full px-5 py-2.5">
+                    Solutions
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-6 bg-white/95 backdrop-blur-xl rounded-2xl border border-blue-100/50 shadow-2xl shadow-blue-500/10">
+                      {solutions.map((solution) => (
+                        <ListItem
+                          key={solution.title}
+                          title={solution.title}
+                          href={solution.href}
+                        >
+                          {solution.description}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link href="/about" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                      )}
                     >
-                      {solution.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+                      About Us
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
 
-            <Link
-              href="/about"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
-            >
-              About Us
-            </Link>
+                <NavigationMenuItem>
+                  <Link href="/testimonials" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                      )}
+                    >
+                      Testimonials
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
 
-            <Link
-              href="/testimonials"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
-            >
-              Testimonials
-            </Link>
+                <NavigationMenuItem>
+                  <Link href="/faq" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                      )}
+                    >
+                      FAQ
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
 
-            <Link
-              href="/faq"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
-            >
-              FAQ
-            </Link>
+                <NavigationMenuItem>
+                  <Link href="/blog" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                      )}
+                    >
+                      Blog
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
 
-            <Link
-              href="/blog"
-              className="text-gray-800 hover:text-blue-600 transition-colors text-sm font-medium px-2"
+            <Button
+              asChild
+              size="lg"
+              className="ml-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 rounded-full font-semibold shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-600/30 transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              Blog
-            </Link>
-
-            <Link
-              href="/contact"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 ml-2"
-            >
-              Contact Us
-            </Link>
+              <Link href="/contact">Contact Us</Link>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-800"
+            className="md:hidden p-2.5 rounded-xl bg-blue-50/50 hover:bg-blue-100/50 text-blue-600 transition-all duration-300 hover:scale-110 active:scale-95"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -150,62 +263,135 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100">
-          <div className="px-4 py-4 space-y-3">
-            <Link href="/" className="block py-2 text-gray-800 hover:text-blue-600">
+        <div className="md:hidden glass-effect border-t border-blue-100/20 shadow-2xl shadow-blue-500/10 animate-in slide-in-from-top-5 duration-300">
+          <div className="container mx-auto px-6 py-6 space-y-4 max-h-[calc(100vh-5rem)] overflow-y-auto">
+            <Link
+              href="/"
+              className="block py-3 px-4 text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl font-medium transition-all duration-300"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Home
             </Link>
 
             <div className="py-2">
-              <div className="text-gray-600 text-xs font-semibold uppercase mb-2">Services</div>
-              {services.map((service) => (
-                <Link
-                  key={service.name}
-                  href={service.href}
-                  className="block py-2 pl-4 text-sm text-gray-800 hover:text-blue-600"
-                >
-                  {service.name}
-                </Link>
-              ))}
+              <div className="text-blue-600 text-xs font-bold uppercase mb-3 px-4 tracking-wider">
+                Services
+              </div>
+              <div className="space-y-1">
+                {services.map((service) => (
+                  <Link
+                    key={service.title}
+                    href={service.href}
+                    className="block py-3 px-4 text-sm text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl transition-all duration-300 border-l-2 border-transparent hover:border-blue-600"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <div className="font-medium mb-1">{service.title}</div>
+                    <div className="text-xs text-slate-500">{service.description}</div>
+                  </Link>
+                ))}
+              </div>
             </div>
 
             <div className="py-2">
-              <div className="text-gray-600 text-xs font-semibold uppercase mb-2">Solutions</div>
-              {solutions.map((solution) => (
-                <Link
-                  key={solution.name}
-                  href={solution.href}
-                  className="block py-2 pl-4 text-sm text-gray-800 hover:text-blue-600"
-                >
-                  {solution.name}
-                </Link>
-              ))}
+              <div className="text-blue-600 text-xs font-bold uppercase mb-3 px-4 tracking-wider">
+                Solutions
+              </div>
+              <div className="space-y-1">
+                {solutions.map((solution) => (
+                  <Link
+                    key={solution.title}
+                    href={solution.href}
+                    className="block py-3 px-4 text-sm text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl transition-all duration-300 border-l-2 border-transparent hover:border-blue-600"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <div className="font-medium mb-1">{solution.title}</div>
+                    <div className="text-xs text-slate-500">{solution.description}</div>
+                  </Link>
+                ))}
+              </div>
             </div>
 
-            <Link href="/about" className="block py-2 text-gray-800 hover:text-blue-600">
+            <Link
+              href="/about"
+              className="block py-3 px-4 text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl font-medium transition-all duration-300"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               About Us
             </Link>
-            <Link href="/testimonials" className="block py-2 text-gray-800 hover:text-blue-600">
+
+            <Link
+              href="/testimonials"
+              className="block py-3 px-4 text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl font-medium transition-all duration-300"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Testimonials
             </Link>
-            <Link href="/faq" className="block py-2 text-gray-800 hover:text-blue-600">
+
+            <Link
+              href="/faq"
+              className="block py-3 px-4 text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl font-medium transition-all duration-300"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               FAQ
             </Link>
-            <Link href="/blog" className="block py-2 text-gray-800 hover:text-blue-600">
+
+            <Link
+              href="/blog"
+              className="block py-3 px-4 text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl font-medium transition-all duration-300"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Blog
             </Link>
-            <Link href="/contact" className="block py-2 text-blue-600 font-medium">
-              Contact Us
-            </Link>
 
-            <div className="pt-4 border-t border-gray-200">
-              <a href="tel:705-822-8605" className="flex items-center py-2 text-gray-800">
-                <Phone size={16} className="mr-2" />
-                <span className="text-sm">705-822-8605</span>
+            <div className="pt-4 border-t border-blue-100/50">
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-6 rounded-xl font-semibold shadow-lg shadow-blue-500/25 transition-all duration-300"
+              >
+                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  Contact Us
+                </Link>
+              </Button>
+            </div>
+
+            <div className="pt-4 space-y-3 border-t border-blue-100/50">
+              <a
+                href="tel:705-822-8605"
+                className="flex items-center gap-3 py-3 px-4 text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl transition-all duration-300 group"
+              >
+                <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <Phone size={16} className="text-white" />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-500">Pathik</div>
+                  <div className="font-medium">705-822-8605</div>
+                </div>
               </a>
-              <a href="tel:705-970-4920" className="flex items-center py-2 text-gray-800">
-                <Phone size={16} className="mr-2" />
-                <span className="text-sm">705-970-4920</span>
+
+              <a
+                href="tel:705-970-4920"
+                className="flex items-center gap-3 py-3 px-4 text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl transition-all duration-300 group"
+              >
+                <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <Phone size={16} className="text-white" />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-500">Atmiya</div>
+                  <div className="font-medium">705-970-4920</div>
+                </div>
+              </a>
+
+              <a
+                href="https://maps.app.goo.gl/h6oEPLfpaS2BJ6gPA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 py-3 px-4 text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-xl transition-all duration-300 group"
+              >
+                <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <MapPin size={16} className="text-white" />
+                </div>
+                <div className="font-medium">View on Google Maps</div>
               </a>
             </div>
           </div>
