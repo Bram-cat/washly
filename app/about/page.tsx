@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Award, Users, Target, Heart, Phone } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,41 +14,54 @@ export default function AboutPage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              About Washly
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Your trusted partner for professional washing services in Prince Edward Island
-            </p>
+      <section className="relative py-32 gradient-mesh overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl"></div>
+
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-5xl">
+          <div className="mb-6 inline-block px-6 py-2 bg-blue-100/80 backdrop-blur-sm rounded-full text-blue-700 font-semibold text-sm">
+            Our Story
           </div>
+          <h1 className="text-6xl md:text-7xl font-bold mb-8">
+            <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
+              About Washly
+            </span>
+          </h1>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            Your trusted partner for professional washing services in Prince Edward Island
+          </p>
         </div>
       </section>
 
       {/* Our Story */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Washly Washing Services was founded with a simple mission: to provide exceptional cleaning services that help homes and businesses shine brighter. We are a locally operated company proudly serving Prince Edward Island.
-              </p>
-              <p className="text-lg text-gray-600 mb-6">
-                Our team brings years of experience in professional washing services, combining industry expertise with a commitment to customer satisfaction. We use the latest equipment and eco-friendly cleaning solutions to deliver outstanding results every time.
-              </p>
-              <p className="text-lg text-gray-600">
-                From window cleaning to pressure washing, we treat every property with the same care and attention we'd give our own. That's the Washly difference.
-              </p>
+              <h2 className="text-5xl font-bold mb-8">
+                <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
+                  Our Story
+                </span>
+              </h2>
+              <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+                <p>
+                  Washly Washing Services was founded with a simple mission: to provide exceptional cleaning services that help homes and businesses shine brighter. We are a locally operated company proudly serving Prince Edward Island.
+                </p>
+                <p>
+                  Our team brings years of experience in professional washing services, combining industry expertise with a commitment to customer satisfaction. We use the latest equipment and eco-friendly cleaning solutions to deliver outstanding results every time.
+                </p>
+                <p>
+                  From window cleaning to pressure washing, we treat every property with the same care and attention we would give our own. That is the Washly difference.
+                </p>
+              </div>
             </div>
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent z-10"></div>
               <Image
                 src="/7.png"
                 alt="Washly team at work"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
@@ -54,9 +69,13 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Core Values</h2>
+      <section className="py-24 bg-gradient-to-b from-blue-50/30 via-white to-blue-50/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <h2 className="text-5xl font-bold text-center mb-16">
+            <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
+              Our Core Values
+            </span>
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
@@ -80,27 +99,39 @@ export default function AboutPage() {
                 desc: 'We treat your property with respect and attention to detail.',
               },
             ].map((value, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl shadow-md text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                  <value.icon className="text-blue-600" size={32} />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.desc}</p>
-              </div>
+              <Card key={index} className="group text-center border-none shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-gradient-to-br from-white via-blue-50/40 to-white overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/0 to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <CardHeader className="relative">
+                  <div className="mx-auto w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                    <value.icon className="text-white h-10 w-10" />
+                  </div>
+                  <CardTitle className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-blue-900 bg-clip-text text-transparent">
+                    {value.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-slate-600 text-base">{value.desc}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-12">Why Choose Washly?</h2>
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <h2 className="text-5xl font-bold text-center mb-16">
+            <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
+              Why Choose Washly?
+            </span>
+          </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 title: 'Locally Operated',
-                desc: 'We\'re part of the PEI community and understand local needs.',
+                desc: 'We are part of the PEI community and understand local needs.',
               },
               {
                 title: 'Experienced Team',
@@ -123,9 +154,11 @@ export default function AboutPage() {
                 desc: 'We stand behind our work with a satisfaction guarantee.',
               },
             ].map((item, index) => (
-              <div key={index} className="p-6 border-l-4 border-blue-600 bg-blue-50">
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
+              <div key={index} className="group p-8 border-l-4 border-blue-600 bg-gradient-to-r from-blue-50/50 to-transparent hover:from-blue-100/50 transition-all duration-300 rounded-r-xl">
+                <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-slate-900 to-blue-900 bg-clip-text text-transparent">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 text-lg">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -133,59 +166,71 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-6">Meet Our Team</h2>
-          <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+      <section className="py-24 bg-gradient-to-b from-blue-50/30 via-white to-blue-50/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <h2 className="text-5xl font-bold text-center mb-6">
+            <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
+              Meet Our Team
+            </span>
+          </h2>
+          <p className="text-xl text-slate-600 text-center mb-16 max-w-3xl mx-auto">
             Our dedicated team is here to serve you with professionalism and expertise
           </p>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white p-8 rounded-2xl shadow-md text-center">
-              <h3 className="text-2xl font-bold mb-2">Pathik Pandya</h3>
-              <p className="text-blue-600 font-semibold mb-4">Co-Owner</p>
-              <a
-                href="tel:705-822-8605"
-                className="inline-flex items-center text-gray-600 hover:text-blue-600"
-              >
-                <Phone className="mr-2" size={18} />
-                705-822-8605
-              </a>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-md text-center">
-              <h3 className="text-2xl font-bold mb-2">Atmiya Patel</h3>
-              <p className="text-blue-600 font-semibold mb-4">Co-Owner</p>
-              <a
-                href="tel:705-970-4920"
-                className="inline-flex items-center text-gray-600 hover:text-blue-600"
-              >
-                <Phone className="mr-2" size={18} />
-                705-970-4920
-              </a>
-            </div>
+            {[
+              { name: 'Pathik Pandya', role: 'Co-Owner', phone: '705-822-8605' },
+              { name: 'Atmiya Patel', role: 'Co-Owner', phone: '705-970-4920' },
+            ].map((member, index) => (
+              <Card key={index} className="group p-10 border-none shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-gradient-to-br from-white via-blue-50/40 to-white text-center overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/0 to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <CardContent className="relative pt-6">
+                  <h3 className="text-3xl font-bold mb-2 bg-gradient-to-r from-slate-900 to-blue-900 bg-clip-text text-transparent">
+                    {member.name}
+                  </h3>
+                  <p className="text-blue-600 font-semibold text-lg mb-6">{member.role}</p>
+                  <a
+                    href={`tel:${member.phone}`}
+                    className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors group-hover:scale-105 duration-300"
+                  >
+                    <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg">
+                      <Phone className="h-5 w-5 text-white" />
+                    </div>
+                    <span className="text-lg font-medium">{member.phone}</span>
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Work With Us?</h2>
-          <p className="text-xl mb-8 opacity-90">
+      <section className="py-32 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8">
+            Ready to Work With Us?
+          </h2>
+          <p className="text-xl mb-12 opacity-95">
             Experience the Washly difference. Contact us today for a free quote.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full text-lg font-semibold transition-all"
-            >
-              Get Free Quote
-            </Link>
-            <a
-              href="tel:705-822-8605"
-              className="bg-blue-800 hover:bg-blue-900 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all"
-            >
-              705-822-8605
-            </a>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button asChild size="lg" className="bg-white hover:bg-blue-50 text-blue-700 px-12 py-7 rounded-full text-lg font-bold shadow-2xl transition-all duration-300 hover:scale-105">
+              <Link href="/contact">
+                Get Free Quote
+              </Link>
+            </Button>
+            <Button asChild size="lg" className="bg-blue-800/50 hover:bg-blue-800 backdrop-blur-sm text-white px-10 py-7 rounded-full text-lg font-semibold border border-white/20 shadow-lg transition-all duration-300 hover:scale-105">
+              <a href="tel:705-822-8605">
+                705-822-8605
+              </a>
+            </Button>
           </div>
         </div>
       </section>
