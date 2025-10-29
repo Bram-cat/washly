@@ -34,12 +34,27 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
   --primary: #0066CC;
-  --primary-dark: #004999;
+  --primary-light: #3b82f6;
+  --primary-dark: #1e40af;
   --secondary: #ffffff;
   --accent: #FFA500;
-  --radius: 0.5rem;
+  --radius: 0.75rem;
+
+  /* Modern Blue Gradients */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-blue-subtle: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #ffffff 100%);
+  --gradient-blue-soft: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);
+  --gradient-ocean: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+  --gradient-sky: linear-gradient(to bottom right, #e0f2fe, #bae6fd, #7dd3fc);
+  --gradient-mesh: radial-gradient(at 40% 20%, #dbeafe 0px, transparent 50%),
+                   radial-gradient(at 80% 0%, #bfdbfe 0px, transparent 50%),
+                   radial-gradient(at 0% 50%, #e0f2fe 0px, transparent 50%),
+                   radial-gradient(at 80% 50%, #93c5fd 0px, transparent 50%),
+                   radial-gradient(at 0% 100%, #dbeafe 0px, transparent 50%),
+                   radial-gradient(at 80% 100%, #bfdbfe 0px, transparent 50%),
+                   radial-gradient(at 0% 0%, #e0f2fe 0px, transparent 50%);
 }
 
 @theme inline {
@@ -67,4 +82,39 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Modern gradient utilities */
+.gradient-mesh {
+  background: var(--gradient-mesh), white;
+}
+
+.gradient-blue-glow {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 100%);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #e0f2fe, #bae6fd, #93c5fd, #dbeafe);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
 }
