@@ -13,7 +13,8 @@
       "Bash(git commit:*)",
       "Bash(npm run build:*)",
       "Bash(npx shadcn@latest add:*)",
-      "Bash(git remote get-url:*)"
+      "Bash(git remote get-url:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []

@@ -138,16 +138,15 @@ export default function Navbar() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <Link href="/" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
-                      )}
-                    >
-                      Home
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                    )}
+                  >
+                    <Link href="/">Home</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
@@ -189,55 +188,51 @@ export default function Navbar() {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/about" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
-                      )}
-                    >
-                      About Us
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                    )}
+                  >
+                    <Link href="/about">About Us</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/testimonials" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
-                      )}
-                    >
-                      Testimonials
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                    )}
+                  >
+                    <Link href="/testimonials">Testimonials</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/faq" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
-                      )}
-                    >
-                      FAQ
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                    )}
+                  >
+                    <Link href="/faq">FAQ</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/blog" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
-                      )}
-                    >
-                      Blog
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 font-medium transition-all duration-300 rounded-full px-5 py-2.5'
+                    )}
+                  >
+                    <Link href="/blog">Blog</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
