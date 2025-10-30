@@ -1,5 +1,6 @@
 'use client';
 
+// Navbar with shadcn NavigationMenu component - Updated 2025
 import * as React from 'react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
