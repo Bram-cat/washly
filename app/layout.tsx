@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: "Washly - Professional Washing Services in PEI",
     description: "Professional window, gutter, and pressure washing services in Prince Edward Island. Shine brighter together!",
     type: "website",
+    url: "https://washly-flame.vercel.app",
   },
 };
 
