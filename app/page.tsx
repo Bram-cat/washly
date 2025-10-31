@@ -175,22 +175,22 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <CardHeader className="pb-4 pt-8 px-6 sm:px-8">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex-shrink-0 p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-md">
+                  <CardHeader className="pb-4 pt-8 px-6 sm:px-8 text-center">
+                    <div className="flex flex-col items-center gap-4 mb-4">
+                      <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-md">
                         <service.icon className="text-white h-6 w-6" />
                       </div>
                       <CardTitle className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-900 to-blue-900 bg-clip-text text-transparent">
                         {service.title}
                       </CardTitle>
                     </div>
-                    <CardDescription className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                    <CardDescription className="text-sm sm:text-base text-slate-600 leading-relaxed text-center">
                       {service.description}
                     </CardDescription>
                   </CardHeader>
 
-                  <CardContent className="px-6 sm:px-8 pb-8">
-                    <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-semibold p-0">
+                  <CardContent className="px-6 sm:px-8 pb-8 text-center">
+                    <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-semibold">
                       Learn More
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
                     </Button>

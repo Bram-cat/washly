@@ -94,54 +94,56 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-28 bg-gradient-to-b from-white via-blue-50/20 to-white">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <section className="w-full py-28 bg-gradient-to-b from-white via-blue-50/20 to-white">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 w-full">
             {services.map((service, index) => (
               <Link
                 key={index}
                 href={service.href}
-                className="group block"
+                className="group block w-full"
               >
-                <Card className="h-full overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-white">
-                  <div className="relative h-64 overflow-hidden">
+                <Card className="h-full w-full overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-white">
+                  <div className="relative w-full h-64 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-900/20 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
                     <Image
                       src={service.image}
                       alt={service.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
 
-                  <CardHeader className="pb-4 pt-8 px-8">
-                    <div className="flex items-center gap-4 mb-4">
+                  <CardHeader className="pb-4 pt-8 px-6 sm:px-8 text-center">
+                    <div className="flex flex-col items-center gap-4 mb-4">
                       <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-md group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
                         <service.icon className="text-white h-6 w-6" />
                       </div>
-                      <CardTitle className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-blue-900 bg-clip-text text-transparent">
+                      <CardTitle className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-900 to-blue-900 bg-clip-text text-transparent">
                         {service.title}
                       </CardTitle>
                     </div>
-                    <CardDescription className="text-base text-slate-600 leading-relaxed">
+                    <CardDescription className="text-sm sm:text-base text-slate-600 leading-relaxed text-center">
                       {service.description}
                     </CardDescription>
                   </CardHeader>
 
-                  <CardContent className="px-8 pb-8">
-                    <ul className="space-y-2 mb-6">
+                  <CardContent className="px-6 sm:px-8 pb-8">
+                    <ul className="space-y-2 mb-6 text-center">
                       {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-slate-600">
+                        <li key={i} className="flex items-center justify-center gap-2 text-sm text-slate-600">
                           <CheckCircle className="h-4 w-4 text-blue-600 flex-shrink-0" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-semibold p-0 w-full justify-start">
-                      Learn More
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
-                    </Button>
+                    <div className="text-center">
+                      <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-semibold">
+                        Learn More
+                        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               </Link>
