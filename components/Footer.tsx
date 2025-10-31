@@ -22,6 +22,11 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
+                <Link href="/services" className="text-gray-400 hover:text-blue-400 text-sm transition-colors font-semibold">
+                  All Services
+                </Link>
+              </li>
+              <li>
                 <Link href="/services/window-cleaning" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
                   Window Cleaning
                 </Link>
@@ -37,13 +42,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services/soft-washing" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
-                  Soft Washing
+                <Link href="/services/carpet-upholstery" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
+                  Carpet & Upholstery
                 </Link>
               </li>
               <li>
-                <Link href="/services/roof-cleaning" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
-                  Roof Cleaning
+                <Link href="/services/vehicle-detailing" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
+                  Vehicle Detailing
                 </Link>
               </li>
             </ul>

@@ -43,6 +43,16 @@ const services = [
     href: '/services/roof-cleaning',
     description: 'Extend your roof life with professional cleaning.',
   },
+  {
+    title: 'Carpet & Upholstery',
+    href: '/services/carpet-upholstery',
+    description: 'Deep cleaning for carpets, rugs, and furniture.',
+  },
+  {
+    title: 'Vehicle Detailing',
+    href: '/services/vehicle-detailing',
+    description: 'Professional auto detailing to restore your vehicle.',
+  },
 ];
 
 const solutions = [
@@ -154,7 +164,22 @@ export default function Navbar() {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[600px] gap-3 p-6 md:grid-cols-2 bg-white/95 backdrop-blur-xl rounded-2xl border border-blue-100/50 shadow-2xl shadow-blue-500/10">
+                    <ul className="grid w-[700px] gap-3 p-6 md:grid-cols-2 bg-white/95 backdrop-blur-xl rounded-2xl border border-blue-100/50 shadow-2xl shadow-blue-500/10">
+                      <li className="row-span-1 md:col-span-2">
+                        <NavigationMenuLink asChild>
+                          <a
+                            href="/services"
+                            className="flex select-none flex-col justify-end rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 no-underline outline-none transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] group"
+                          >
+                            <div className="mb-2 text-lg font-bold text-white group-hover:scale-105 transition-transform duration-300">
+                              View All Services
+                            </div>
+                            <p className="text-sm leading-tight text-blue-100">
+                              Explore our complete range of professional washing and detailing services
+                            </p>
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
                       {services.map((service) => (
                         <ListItem
                           key={service.title}
