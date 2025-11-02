@@ -20,7 +20,7 @@ const benefits = [
   {
     icon: ThumbsUp,
     title: "100% Satisfaction",
-    description: "We're not happy until you're happy - satisfaction guaranteed",
+    description: "We&apos;re not happy until you&apos;re happy - satisfaction guaranteed",
     color: "from-purple-500 to-indigo-500"
   },
   {
@@ -87,7 +87,7 @@ export function WhyChooseUs() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-tanker">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Why Choose Washly?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -111,7 +111,7 @@ export function WhyChooseUs() {
                     <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-primary mb-3 font-tanker">
+                    <h3 className="text-xl font-bold text-primary mb-3">
                       {benefit.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -132,7 +132,7 @@ export function WhyChooseUs() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <div className="inline-block bg-gradient-to-r from-primary to-blue-900 text-white px-8 py-4 rounded-full shadow-lg">
-            <p className="text-xl font-bold font-tanker">
+            <p className="text-xl font-bold">
               ⭐ Rated 5.0 Stars • 40+ Happy Customers • 100% Satisfaction Rate
             </p>
           </div>
