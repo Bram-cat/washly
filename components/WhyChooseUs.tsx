@@ -91,7 +91,7 @@ export function WhyChooseUs() {
             Why Choose Washly?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We're committed to delivering exceptional results and outstanding customer service
+            We&apos;re committed to delivering exceptional results and outstanding customer service
           </p>
         </motion.div>
 
