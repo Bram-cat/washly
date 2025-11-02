@@ -1,68 +1,78 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Mail, MapPin, Phone } from "lucide-react"
-import { useState } from "react"
-import { Resend } from "resend"
+import { motion } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { useState } from "react";
 
 export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    message: ""
-  })
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [error, setError] = useState("")
+    message: "",
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setError("")
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit form')
+        throw new Error(data.error || "Failed to submit form");
       }
 
-      setIsSubmitted(true)
+      setIsSubmitted(true);
       setTimeout(() => {
-        setIsSubmitted(false)
-        setFormData({ name: "", email: "", phone: "", message: "" })
-      }, 3000)
+        setIsSubmitted(false);
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      }, 3000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred')
-      console.error('Form submission error:', err)
+      setError(err instanceof Error ? err.message : "An error occurred");
+      console.error("Form submission error:", err);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-blue-50 to-white">
+    <section
+      id="contact"
+      className="py-20 bg-gradient-to-b from-blue-50 to-white"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"
@@ -75,7 +85,8 @@ export function Contact() {
             Get In Touch
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Ready to make your property shine? Contact us today for a free quote!
+            Ready to make your property shine? Contact us today for a free
+            quote!
           </p>
         </motion.div>
 
@@ -88,9 +99,12 @@ export function Contact() {
           >
             <Card className="h-full border-2">
               <CardHeader>
-                <CardTitle className="text-2xl text-primary">Send Us a Message</CardTitle>
+                <CardTitle className="text-2xl text-primary">
+                  Send Us a Message
+                </CardTitle>
                 <CardDescription>
-                  Fill out the form below and we&apos;ll get back to you as soon as possible
+                  Fill out the form below and we&apos;ll get back to you as soon
+                  as possible
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -151,7 +165,11 @@ export function Contact() {
                     className="w-full bg-primary hover:bg-primary/90"
                     disabled={isSubmitted || isSubmitting}
                   >
-                    {isSubmitting ? "Sending..." : isSubmitted ? "Message Sent!" : "Send Message"}
+                    {isSubmitting
+                      ? "Sending..."
+                      : isSubmitted
+                      ? "Message Sent!"
+                      : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
@@ -167,7 +185,9 @@ export function Contact() {
           >
             <Card className="border-2 hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle className="text-2xl text-primary">Contact Information</CardTitle>
+                <CardTitle className="text-2xl text-primary">
+                  Contact Information
+                </CardTitle>
                 <CardDescription>
                   Reach out to us directly via phone or visit us in PEI
                 </CardDescription>
@@ -178,7 +198,9 @@ export function Contact() {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-primary mb-2">Phone Numbers</h3>
+                    <h3 className="font-semibold text-primary mb-2">
+                      Phone Numbers
+                    </h3>
                     <a
                       href="tel:7058228605"
                       className="block text-gray-700 hover:text-primary transition-colors mb-1"
@@ -199,9 +221,12 @@ export function Contact() {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-primary mb-2">Location</h3>
+                    <h3 className="font-semibold text-primary mb-2">
+                      Location
+                    </h3>
                     <p className="text-gray-700">
-                      Locally operated in<br />
+                      Locally operated in
+                      <br />
                       Prince Edward Island, Canada
                     </p>
                   </div>
@@ -212,9 +237,12 @@ export function Contact() {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-primary mb-2">Business Hours</h3>
+                    <h3 className="font-semibold text-primary mb-2">
+                      Business Hours
+                    </h3>
                     <p className="text-gray-700">
-                      Monday - Saturday: 8:00 AM - 6:00 PM<br />
+                      Monday - Saturday: 8:00 AM - 6:00 PM
+                      <br />
                       Sunday: By appointment
                     </p>
                   </div>
@@ -224,9 +252,12 @@ export function Contact() {
 
             <Card className="border-2 bg-gradient-to-br from-primary to-blue-900 text-white">
               <CardContent className="p-6">
-                <h3 className="text-2xl font-bold mb-2">Ready to Get Started?</h3>
+                <h3 className="text-2xl font-bold mb-2">
+                  Ready to Get Started?
+                </h3>
                 <p className="text-blue-100 mb-4">
-                  Call us today for a free, no-obligation quote on any of our services!
+                  Call us today for a free, no-obligation quote on any of our
+                  services!
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button
@@ -250,5 +281,5 @@ export function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
