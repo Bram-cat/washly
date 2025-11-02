@@ -4,6 +4,16 @@ import * as React from "react";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+export async function GET() {
+  return NextResponse.json(
+    { 
+      error: "Method not allowed",
+      message: "This endpoint only accepts POST requests. Please submit your contact form data via POST."
+    },
+    { status: 405 }
+  );
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
