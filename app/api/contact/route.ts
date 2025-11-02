@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import * as React from "react";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend only if API key is available
+let resend: Resend | null = null;
+try {
+  if (process.env.RESEND_API_KEY) {
+    resend = new Resend(process.env.RESEND_API_KEY);
+  }
+} catch (error) {
+  console.error("Failed to initialize Resend:", error);
+}
 
 export async function GET() {
   return NextResponse.json(
@@ -45,9 +52,10 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
     });
 
-    // Send email via Resend
-    try {
-      await resend.emails.send({
+    // Send email via Resend (if configured)
+    if (resend) {
+      try {
+        await resend.emails.send({
         from: "Washly Washing Services <onboarding@resend.dev>",
         to: [process.env.CONTACT_EMAIL || "vsbharaniram5@gmail.com"],
         subject: `New Contact Form Submission from ${name}`,
@@ -99,10 +107,13 @@ export async function POST(request: NextRequest) {
             </body>
           </html>
         `,
-      });
-    } catch (emailError) {
-      console.error("Failed to send email:", emailError);
-      // Continue even if email fails - still return success to user
+        });
+      } catch (emailError) {
+        console.error("Failed to send email:", emailError);
+        // Continue even if email fails - still return success to user
+      }
+    } else {
+      console.warn("Resend not configured - email not sent");
     }
 
     return NextResponse.json(
